@@ -13,32 +13,29 @@
 // Traversy https://www.youtube.com/watch?v=hdI2bqOjy3c&t=4419s
  
 
-
-
 var minXInput= document.querySelector("#minX");
 var minYInput =document.querySelector("#maxX");
 var maxXInput =document.querySelector("#maxX");
 var maxYInput =maxY = document.querySelector("#maxY");
 var error=false;
 var errmsg="None";
-const msg = document.querySelector('.errmsg');
-const btn = document.querySelector('.btn');
-const tableRange= [0, 0, 0, 0];  //min x, min y, max x, max y
+const msg = document.querySelector('.msg');
+const btn = document.querySelector('.btn')
+const tableRange= [null, null, null,null];  //min x, min y, max x, max y
 
-function setValues() {
-    // minY = document.querySelector("#minY");
-    // maxX = document.querySelector("#maxX");
-    // maxY = document.querySelector("#maxY");
-    // console.log(minX);
-    // validate(minX);
-    
-    // if (error){msg.classList.add(errmsg);}
-}
+
+btn.disabled = true;
+//fixme range needs to be -50 &50
 function validate( num) {
     if ((num < 0 )||( num > 5)){
         error = true;
-    errmsg = 'Input number between -50 and 50';
+        errmsg = 'Input number between -50 and 50';
     }
+    if (!error && tableRange[0]!=null&& tableRange[1]!=null&& tableRange[2]!=null && tableRange[]!=null) { btn.disabled = false; }
+
+    
+    msg.classList.add('error');
+    msg.innerHTML = errmsg;
     // if (error){msg.classList.add(errmsg);}
     console.log(errmsg);
 }
@@ -52,6 +49,6 @@ minX.addEventListener('change', e => {
   
 btn.addEventListener('click', e => {
     e.preventDefault();
-    setValues();
+    // makeTable();
    
   });
