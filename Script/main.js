@@ -77,7 +77,8 @@ function makeTable() {
     console.log("Calculating Table");
     console.log("Min X: " + tableRange[0] + " Min Y: " + tableRange[1] + " Max X " + tableRange[2] + " Max Y " + tableRange[3]);
     var y = tableRange[1];
-    var index = 0;
+    var rowIndex = 0;
+    var colIndex = 0;
     var row;
     var cell;
     var header = table.createTHead();
@@ -92,17 +93,18 @@ function makeTable() {
 
     //Calculate table contents
     while (y <= tableRange[3]) {
-        index = 0;
+        colIndex = 0;
         console.log("New Row: " +y);
-        row = table.insertRow(index);
+        row = table.insertRow(rowIndex);
         for (let x = tableRange[0]; x < tableRange[2]; x++){
-            cell = row.insertCell(index);
+            cell = row.insertCell(colIndex);
             cell.innerHTML = y * x;
             console.log("Row " + x+ " Column " + y);
-            console.log("Resut"+(x * y));
+            console.log("Resut" + (x * y));
+            colIndex++;
         }
         y++;
-        index++;
+        rowIndex++;
     }
 
     // row = table.insertRow(0);
