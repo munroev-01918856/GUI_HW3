@@ -13,13 +13,21 @@
 // Traversy https://www.youtube.com/watch?v=hdI2bqOjy3c&t=4419s
  
 
+/*
+Todo:
+removing errro
+removing error message
+clear table
+add headers
+table upside down*/
+
 var minXInput= document.querySelector("#minX");
 var minYInput =document.querySelector("#minY");
 var maxXInput =document.querySelector("#maxX");
 var maxYInput = maxY = document.querySelector("#maxY");
 const table = document.getElementById("mlttable");
 var error=false;
-var errmsg="None";
+var errmsg="";
 const msg = document.querySelector('.msg');
 const btn = document.querySelector('.btn')
 const tableRange= [null, null, null,null];  //min x, min y, max x, max y
@@ -34,13 +42,12 @@ function validate( num) {
         error = true;
         errmsg = 'Input number between -50 and 50';
     }
+    
     if (!error && tableRange[0]!=null&& tableRange[1]!=null&& tableRange[2]!=null && tableRange[3]!=null) { btn.disabled = false; }
     else {btn.disabled = true;}
     
     msg.classList.add('error');
     msg.innerHTML = errmsg;
-    // if (error){msg.classList.add(errmsg);}
-    console.log(errmsg);
 }
 
 // Input Listeners
@@ -74,6 +81,7 @@ btn.addEventListener('click', e => {
 });
   
 function makeTable() {
+    // table.remove();
     console.log("Calculating Table");
     console.log("Min X: " + tableRange[0] + " Min Y: " + tableRange[1] + " Max X " + tableRange[2] + " Max Y " + tableRange[3]);
     var y = tableRange[1];
@@ -96,7 +104,7 @@ function makeTable() {
         colIndex = 0;
         console.log("New Row: " +y);
         row = table.insertRow(rowIndex);
-        for (let x = tableRange[0]; x < tableRange[2]; x++){
+        for (let x = tableRange[0]; x <= tableRange[2]; x++){
             cell = row.insertCell(colIndex);
             cell.innerHTML = y * x;
             console.log("Row " + x+ " Column " + y);
