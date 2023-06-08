@@ -30,7 +30,7 @@ btn.disabled = true;
 
 //fixme range needs to be -50 &50
 function validate( num) {
-    if ((num < 0 )||( num > 5)){
+    if ((num < 0 )||( num > 50)){
         error = true;
         errmsg = 'Input number between -50 and 50';
     }
@@ -48,31 +48,66 @@ function validate( num) {
 minXInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[0] = Number(minXInput.value);
-    console.log(tableRange[0]);
     validate(tableRange[0]);
 });
 minYInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[1] = Number(minYInput.value);
-    console.log(tableRange[1]);
     validate(tableRange[1]);
 });
 maxXInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[2] = Number(maxXInput.value);
-    console.log(tableRange[2]);
     validate(tableRange[2]);
 });
 maxYInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[3] = Number(maxYInput.value);
-    console.log(tableRange[3]);
     validate(tableRange[3]);
-    console.log("Min X: " + tableRange[0] + " Min Y:" + tableRange[1] + " Max X" + tableRange[2] + " Max Y" + tableRange[3]);
+    
 });
   
 btn.addEventListener('click', e => {
     e.preventDefault();
-    // makeTable();
+    makeTable();
    
-  });
+});
+  
+function makeTable() {
+    console.log("Calculating Table");
+    console.log("Min X: " + tableRange[0] + " Min Y: " + tableRange[1] + " Max X " + tableRange[2] + " Max Y " + tableRange[3]);
+    var y = tableRange[1];
+    var index = 0;
+    var row;
+    var cell;
+    var header = table.createTHead();
+    
+    //create header
+    // row = header.insertRow(0);
+    // for (let x = tableRange[0]; x < tableRange[2]; x++){
+    //     cell = row.insertCell(index);
+    //     cell.innerHTML = x;
+    //     index++;
+    // }
+
+    //Calculate table contents
+    while (y <= tableRange[3]) {
+        index = 0;
+        console.log("New Row: " +y);
+        row = table.insertRow(index);
+        for (let x = tableRange[0]; x < tableRange[2]; x++){
+            cell = row.insertCell(index);
+            cell.innerHTML = y * x;
+            console.log("Row " + x+ " Column " + y);
+            console.log("Resut"+(x * y));
+        }
+        y++;
+        index++;
+    }
+
+    // row = table.insertRow(0);
+    // cell = row.insertCell(0);
+    // var cell2 = row.insertCell(1);
+    // cell.innerHTML = "Hi";
+    // cell2.innerHTML = "world";
+}
