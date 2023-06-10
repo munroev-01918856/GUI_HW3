@@ -17,10 +17,9 @@
 Todo:
 removing errro
 removing error message
-clear table
-can't format just headers
-add column header
-table header upside down
+****clear table ****
+***can't format just headers****
+***add column header****
 make prettier
 input alignment off
 */
@@ -83,7 +82,8 @@ btn.addEventListener('click', e => {
     makeTable();
    
 });
-  
+
+//create dynamic table
 function makeTable() {
     // table.remove();
     console.log("Calculating Table");
