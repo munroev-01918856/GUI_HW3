@@ -41,7 +41,7 @@ btn.disabled = true;
 
 
 
-function validate(buttonName, num) {
+function validate(button, buttonName, num) {
     const regEx = /^-?[0-9]+$/;
     if (regEx.test(num.toString()) == true) { console.log("hell"); }
     if (!regEx.test(num.toString())) {
@@ -56,11 +56,23 @@ function validate(buttonName, num) {
     else {
         error = false;
         errmsg = "";
-        console.log("hi");
     }
+    if (!error) {
+        minXInput.disabled = false;
+        minYInput.disabled = false;
+        maxXInput.disabled=false
+        maxYInput.disabled = false;
+        if (!error && tableRange[0] != null && tableRange[1] != null && tableRange[2] != null && tableRange[3] != null) { btn.disabled = false; }
+        else { btn.disabled = true; }   
+    }
+    else {
+        minXInput.disabled = true;
+        minYInput.disabled = true;
+        maxXInput.disabled=true
+        maxYInput.disabled = true;
+        button.disabled = false;
 
-    if (!error && tableRange[0]!=null&& tableRange[1]!=null&& tableRange[2]!=null && tableRange[3]!=null) { btn.disabled = false; }
-    else {btn.disabled = true;}
+    }
     
     msg.classList.add('error');
     msg.innerHTML = errmsg;
@@ -72,22 +84,22 @@ function validate(buttonName, num) {
 minXInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[0] = Number(minXInput.value);
-    validate("Minimum row number ", tableRange[0]);
+    validate(minXInput,"Minimum row number ", tableRange[0]);
 });
 minYInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[1] = Number(minYInput.value);
-    validate("Minimum column number ",tableRange[1]);
+    validate(minYInput,"Minimum column number ",tableRange[1]);
 });
 maxXInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[2] = Number(maxXInput.value);
-    validate("Maximum row number",tableRange[2]);
+    validate(maxXInput,"Maximum row number",tableRange[2]);
 });
 maxYInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[3] = Number(maxYInput.value);
-    validate("Maximum column number",tableRange[3]);
+    validate(maxYInput,"Maximum column number",tableRange[3]);
     
 });
   
