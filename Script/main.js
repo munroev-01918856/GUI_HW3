@@ -18,8 +18,12 @@ Todo:
 removing errro
 removing error message
 clear table
-add headers
-table upside down*/
+can't format just headers
+add column header
+table header upside down
+make prettier
+input alignment off
+*/
 
 var minXInput= document.querySelector("#minX");
 var minYInput =document.querySelector("#minY");
@@ -85,19 +89,20 @@ function makeTable() {
     console.log("Calculating Table");
     console.log("Min X: " + tableRange[0] + " Min Y: " + tableRange[1] + " Max X " + tableRange[2] + " Max Y " + tableRange[3]);
     var y = tableRange[1];
-    var rowIndex = 0;
+    var rowIndex = 1;
     var colIndex = 0;
     var row;
+    var headerRow;
     var cell;
     var header = table.createTHead();
     
     //create header
-    // row = header.insertRow(0);
-    // for (let x = tableRange[0]; x < tableRange[2]; x++){
-    //     cell = row.insertCell(index);
-    //     cell.innerHTML = x;
-    //     index++;
-    // }
+    headerRow = header.insertRow(0);
+    for (let x = tableRange[0]; x <= tableRange[2]; x++){
+        cell = headerRow.insertCell(colIndex);
+        cell.innerHTML = x;
+        colIndex++;
+    }
 
     //Calculate table contents
     while (y <= tableRange[3]) {
@@ -107,8 +112,8 @@ function makeTable() {
         for (let x = tableRange[0]; x <= tableRange[2]; x++){
             cell = row.insertCell(colIndex);
             cell.innerHTML = y * x;
-            console.log("Row " + x+ " Column " + y);
-            console.log("Resut" + (x * y));
+            // console.log("Row " + x+ " Column " + y);
+            // console.log("Resut" + (x * y));
             colIndex++;
         }
         y++;

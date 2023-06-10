@@ -1,6 +1,7 @@
 body{
     height: 100%;
 	width: 100%; 
+
 }
 
 div {
@@ -9,7 +10,14 @@ div {
     
 }
 
-thead{
-    font-weight: bold;
+
+#numberInput{
+    width:max-content;
+    padding: 5% 10%;
+    border-style: solid;
+    text-align: left;
 }
 
+tr:nth-child(even) {
+    background-color: lightsteelblue;
+}
