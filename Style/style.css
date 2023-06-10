@@ -21,3 +21,8 @@ div {
 tr:nth-child(even) {
     background-color: lightsteelblue;
 }
+
+.msg{
+    color: red;
+    font-style: italic;
+}

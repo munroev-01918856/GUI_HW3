@@ -40,17 +40,23 @@ btn.disabled = true;
 
 
 //fixme range needs to be -50 &50
-function validate( num) {
-    if ((num < 0 )||( num > 50)){
+function validate(buttonName, num) {
+    if ((num < 0) || (num > 50)) {
         error = true;
-        errmsg = 'Input number between -50 and 50';
+        errmsg = buttonName + "must be between -50 and 50";
     }
-    
+
+    else {
+        error = false;
+        errmsg = "";
+    }
+
     if (!error && tableRange[0]!=null&& tableRange[1]!=null&& tableRange[2]!=null && tableRange[3]!=null) { btn.disabled = false; }
     else {btn.disabled = true;}
     
     msg.classList.add('error');
     msg.innerHTML = errmsg;
+    return error;
 }
 
 // Input Listeners
@@ -58,22 +64,22 @@ function validate( num) {
 minXInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[0] = Number(minXInput.value);
-    validate(tableRange[0]);
+    validate("Minimum row number ", tableRange[0]);
 });
 minYInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[1] = Number(minYInput.value);
-    validate(tableRange[1]);
+    validate("Minimum column number ",tableRange[1]);
 });
 maxXInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[2] = Number(maxXInput.value);
-    validate(tableRange[2]);
+    validate("Maximum row number",tableRange[2]);
 });
 maxYInput.addEventListener('change', e => {
     e.preventDefault();
     tableRange[3] = Number(maxYInput.value);
-    validate(tableRange[3]);
+    validate("Maximum column number",tableRange[3]);
     
 });
   
