@@ -10,7 +10,17 @@ div {
     
 }
 
+/* #mlttable{
+    overflow: auto;
+    white-space: nowrap;
 
+    max-width: 100px;
+}  */
+
+table {
+    width: 50%;
+
+}
 #numberInput{
     width:max-content;
     padding: 5% 10%;
@@ -25,4 +35,8 @@ tr:nth-child(even) {
 .msg{
     color: red;
     font-style: italic;
+}
+
+.headers{
+    font-weight: bold;
 }

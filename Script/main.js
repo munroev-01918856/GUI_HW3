@@ -15,14 +15,16 @@
 
 /*
 Todo:
-fix validation
-removing error message
-***not returning larger tables****
+High
 ****clear table ****
-***can't format just headers****
 ***add column header****
+mid:
+table not shrinking
 make prettier
 input alignment off
+
+low:
+fix validation
 */
 
 var minXInput= document.querySelector("#minX");
@@ -39,11 +41,9 @@ const tableRange= [null, null, null,null];  //min x, min y, max x, max y
 // Disable calculate until no errors
 btn.disabled = true;
 
-
-
 function validate(button, buttonName, num) {
     const regEx = /^-?[0-9]+$/;
-    if (regEx.test(num.toString()) == true) { console.log("hell"); }
+    console.log(num);
     if (!regEx.test(num.toString())) {
         error = true;
         console.log("true")
@@ -60,7 +60,7 @@ function validate(button, buttonName, num) {
     if (!error) {
         minXInput.disabled = false;
         minYInput.disabled = false;
-        maxXInput.disabled=false
+        maxXInput.disabled = false
         maxYInput.disabled = false;
         if (!error && tableRange[0] != null && tableRange[1] != null && tableRange[2] != null && tableRange[3] != null) { btn.disabled = false; }
         else { btn.disabled = true; }   
@@ -71,7 +71,6 @@ function validate(button, buttonName, num) {
         maxXInput.disabled=true
         maxYInput.disabled = true;
         button.disabled = false;
-
     }
     
     msg.classList.add('error');
@@ -124,6 +123,7 @@ function makeTable() {
     
     //create header
     headerRow = header.insertRow(0);
+    headerRow.setAttribute("class", "headers");
     for (let x = tableRange[0]; x <= tableRange[2]; x++){
         cell = headerRow.insertCell(colIndex);
         cell.innerHTML = x;
