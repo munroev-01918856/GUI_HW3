@@ -15,8 +15,9 @@
 
 /*
 Todo:
-removing errro
+fix validation
 removing error message
+***not returning larger tables****
 ****clear table ****
 ***can't format just headers****
 ***add column header****
@@ -39,16 +40,23 @@ const tableRange= [null, null, null,null];  //min x, min y, max x, max y
 btn.disabled = true;
 
 
-//fixme range needs to be -50 &50
+
 function validate(buttonName, num) {
-    if ((num < 0) || (num > 50)) {
+    const regEx = /^-?[0-9]+$/;
+    if (regEx.test(num.toString()) == true) { console.log("hell"); }
+    if (!regEx.test(num.toString())) {
+        error = true;
+        console.log("true")
+        errmsg = buttonName + "number must be a whole number";
+    }
+    else if ((num < -50) || (num > 50)) {
         error = true;
         errmsg = buttonName + "must be between -50 and 50";
     }
-
     else {
         error = false;
         errmsg = "";
+        console.log("hi");
     }
 
     if (!error && tableRange[0]!=null&& tableRange[1]!=null&& tableRange[2]!=null && tableRange[3]!=null) { btn.disabled = false; }
