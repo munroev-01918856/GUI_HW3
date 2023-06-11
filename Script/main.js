@@ -11,6 +11,7 @@
 // w3Schools w3schools.com
 // TutorialsPoint 
 // Traversy https://www.youtube.com/watch?v=hdI2bqOjy3c&t=4419s
+//https://stackoverflow.com/questions/19625646/javascript-adding-an-id-attribute-to-another-created-element
  
 
 /*
@@ -36,6 +37,7 @@ var error=false;
 var errmsg="";
 const msg = document.querySelector('.msg');
 const btn = document.querySelector('.btn')
+var x = false;
 const tableRange= [null, null, null,null];  //min x, min y, max x, max y
 
 // Disable calculate until no errors
@@ -110,7 +112,7 @@ btn.addEventListener('click', e => {
 
 //create dynamic table
 function makeTable() {
-    // table.remove();
+    x = true;
     console.log("Calculating Table");
     console.log("Min X: " + tableRange[0] + " Min Y: " + tableRange[1] + " Max X " + tableRange[2] + " Max Y " + tableRange[3]);
     var y = tableRange[1];
@@ -125,9 +127,10 @@ function makeTable() {
     headerRow = header.insertRow(0);
     headerRow.setAttribute("class", "headers");
     for (let x = tableRange[0]; x <= tableRange[2]; x++){
-        cell = headerRow.insertCell(colIndex);
-        cell.innerHTML = x;
-        colIndex++;
+        var headerCell = document.createElement("TH");
+        headerCell.innerHTML = x;
+        headerRow.appendChild(headerCell);
+
     }
 
     //Calculate table contents

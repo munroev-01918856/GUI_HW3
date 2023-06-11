@@ -16,10 +16,16 @@ div {
 
     max-width: 100px;
 }  */
-
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 table {
-    width: 50%;
-
+    width: 30%;
+    float: left;
+}
+th{
+    height: 5px;
 }
 #numberInput{
     width:max-content;
@@ -28,6 +34,10 @@ table {
     text-align: left;
 }
 
+.AAAAH{
+    float:left;
+    color: blue;
+}
 tr:nth-child(even) {
     background-color: lightsteelblue;
 }
@@ -39,4 +49,7 @@ tr:nth-child(even) {
 
 .headers{
     font-weight: bold;
+    border: 5px solid black;
+    padding-bottom: 10px;
+    margin: 10px;
 }
