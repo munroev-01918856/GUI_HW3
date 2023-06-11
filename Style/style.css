@@ -45,6 +45,7 @@ tr:nth-child(even) {
 .msg{
     color: red;
     font-style: italic;
+    clear: both;
 }
 
 .headers{

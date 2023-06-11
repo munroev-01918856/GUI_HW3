@@ -16,9 +16,6 @@
 
 /*
 Todo:
-High
-****clear table ****
-***add column header****
 mid:
 table not shrinking
 make prettier
@@ -43,13 +40,14 @@ const tableRange= [null, null, null,null];  //min x, min y, max x, max y
 // Disable calculate until no errors
 btn.disabled = true;
 
+
 function validate(button, buttonName, num) {
     const regEx = /^-?[0-9]+$/;
     console.log(num);
-    if (!regEx.test(num.toString())) {
+    if (!regEx.test(button.value)) {
         error = true;
         console.log("true")
-        errmsg = buttonName + "number must be a whole number";
+        errmsg ="Please check input " +buttonName + "number must be a whole number";
     }
     else if ((num < -50) || (num > 50)) {
         error = true;
@@ -58,6 +56,14 @@ function validate(button, buttonName, num) {
     else {
         error = false;
         errmsg = "";
+    }
+    if ((tableRange[0] != null && tableRange[2] != null) && (tableRange[0] > tableRange[2])) {
+        error = true;
+        errmsg ="Minimum row number must be smaller than maximum row number"
+    }
+    if ((tableRange[1] != null && tableRange[3] != null) && (tableRange[1] > tableRange[3])) {
+        error = true;
+        errmsg ="Minimum column number must be smaller than maximum row number"
     }
     if (!error) {
         minXInput.disabled = false;
@@ -72,6 +78,7 @@ function validate(button, buttonName, num) {
         minYInput.disabled = true;
         maxXInput.disabled=true
         maxYInput.disabled = true;
+        btn.disabled = true;
         button.disabled = false;
     }
     
