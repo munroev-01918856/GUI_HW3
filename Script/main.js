@@ -112,9 +112,10 @@ btn.addEventListener('click', e => {
 
 //create dynamic table
 function makeTable() {
+    table.innerHTML = ""; //clear old table
     x = true;
     console.log("Calculating Table");
-    console.log("Min X: " + tableRange[0] + " Min Y: " + tableRange[1] + " Max X " + tableRange[2] + " Max Y " + tableRange[3]);
+    console.log("Min X: " + tableRange[0] + "Min Y: " + tableRange[1] + "Max X: " + tableRange[2] + "Max Y: " + tableRange[3]);
     var y = tableRange[1];
     var rowIndex = 1;
     var colIndex = 0;
@@ -125,9 +126,11 @@ function makeTable() {
     
     //create header
     headerRow = header.insertRow(0);
-    headerRow.setAttribute("class", "headers");
+    //headerRow.setAttribute("class", "headers"); //TH is bolded by default
+    var headerCell = document.createElement("TH"); //create a blank top-left cell
+    headerRow.appendChild(headerCell);
     for (let x = tableRange[0]; x <= tableRange[2]; x++){
-        var headerCell = document.createElement("TH");
+        headerCell = document.createElement("TH"); //TH is bolded by default
         headerCell.innerHTML = x;
         headerRow.appendChild(headerCell);
 
@@ -135,9 +138,17 @@ function makeTable() {
 
     //Calculate table contents
     while (y <= tableRange[3]) {
-        colIndex = 0;
+	//colIndex = 0;
         console.log("New Row: " +y);
         row = table.insertRow(rowIndex);
+	
+	//create left column header
+	var headerColumnCell = row.insertCell(0);
+	headerColumnCell.innerHTML = y;
+	headerColumnCell.setAttribute("class", "headers");
+	
+	//create rest of the row
+	colIndex = 1; //0th column was header
         for (let x = tableRange[0]; x <= tableRange[2]; x++){
             cell = row.insertCell(colIndex);
             cell.innerHTML = y * x;
