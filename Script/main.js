@@ -14,16 +14,6 @@
 //https://stackoverflow.com/questions/19625646/javascript-adding-an-id-attribute-to-another-created-element
  
 
-/*
-Todo:
-mid:
-table not shrinking
-make prettier
-input alignment off
-
-low:
-fix validation
-*/
 
 var minXInput= document.querySelector("#minX");
 var minYInput =document.querySelector("#minY");
@@ -145,31 +135,23 @@ function makeTable() {
 
     //Calculate table contents
     while (y <= tableRange[3]) {
-	//colIndex = 0;
         console.log("New Row: " +y);
         row = table.insertRow(rowIndex);
 	
 	//create left column header
 	var headerColumnCell = row.insertCell(0);
 	headerColumnCell.innerHTML = y;
-	headerColumnCell.setAttribute("class", "headers");
+
 	
 	//create rest of the row
 	colIndex = 1; //0th column was header
         for (let x = tableRange[0]; x <= tableRange[2]; x++){
             cell = row.insertCell(colIndex);
             cell.innerHTML = y * x;
-            // console.log("Row " + x+ " Column " + y);
-            // console.log("Resut" + (x * y));
             colIndex++;
         }
         y++;
         rowIndex++;
     }
 
-    // row = table.insertRow(0);
-    // cell = row.insertCell(0);
-    // var cell2 = row.insertCell(1);
-    // cell.innerHTML = "Hi";
-    // cell2.innerHTML = "world";
 }
