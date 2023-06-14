@@ -16,22 +16,44 @@ div {
 
     max-width: 100px;
 }  */
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
 table {
-    width: 30%;
-    float: left;
+    width: 100%;
+
 }
-th{
-    height: 5px;
+
+#tblcont{
+	overflow: auto;
+    	width: 600px;
+	height: 300px;
 }
+
+#tblcont thead th{
+    	position: sticky;
+    	top: 0px;
+	background: #ffff;
+}
+
+#tblcont td.headers{
+    	position: sticky;
+    	left: 0px;
+	background: #ffff;
+}
+
 #numberInput{
     width:max-content;
     padding: 5% 10%;
     border-style: solid;
     text-align: left;
+    display: table;
+}
+#numberInput div{
+	display: table-row;
+}
+#numberInput label{
+	display: table-cell;
+}
+#numberInput input{
+	display: table-cell;
 }
 
 .AAAAH{
