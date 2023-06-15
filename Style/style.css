@@ -4,7 +4,7 @@ body{
     height: 100%;
 	width: 100%; 
     font-family: Arial, Helvetica, sans-serif;
-    padding-top: 5%;
+    padding-bottom: 2%;
     background-image: url("../Images/background.png");
 
     /* Center and scale the image nicely */
@@ -12,7 +12,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 
-    color: rgb(7, 145, 147);
+    color:rgb(7, 116, 116);
     font-style: bold;
 
 }
@@ -40,9 +40,8 @@ div {
 	display: table-cell;
 }
 
-.AAAAH{
+.inputBox{
     float:left;
-    color:red;
 }
 
 table {
@@ -76,7 +75,7 @@ tr:nth-child(even) {
     background-color: lightsteelblue;
 }
 tr:nth-child(odd) {
-    background-color: white;
+    background-color:lightgrey;
 }
 
 .msg{
